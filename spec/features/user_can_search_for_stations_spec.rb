@@ -22,7 +22,8 @@ describe "As a user" do
     click_on "Locate"
 
     expect(current_path).to eq("/search")
-    expect(page).to have_css(".station").five.times
+    expect(page).to have_content("274 stations match your query. Here are the closest 15:")
+    expect(page).to have_css(".station").fifteen.times
 
   end
 end

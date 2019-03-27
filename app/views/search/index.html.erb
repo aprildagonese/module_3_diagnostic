@@ -1,5 +1,6 @@
 <h1>Alt Fuel Stations</h1>
 
+<h4><%= stations_facade.station_count %> stations match your query. Here are the closest 15:</h4>
 <% stations_facade.zip_stations.each do |station| %>
   <section class="station"
     <%= station.name %>
