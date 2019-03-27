@@ -1,4 +1,7 @@
 class SearchController < ApplicationController
   def index
-  end 
+    render locals: {
+      stations_facade: StationsFacade.new
+    }
+  end
 end
