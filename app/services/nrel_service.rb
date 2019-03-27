@@ -1,16 +1,17 @@
 class NrelService
   def get_zip_stations(zipcode)
-    get_json("zipcode=#{zipcode}&")
+    get_json("zipcode=#{zipcode}")
   end
 
   def get_json(uri)
     response = conn.get(uri)
-    JSON.parse(response.body, symbolize_names: true)
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
   end
 
   def conn
-    Faraday.new(url: "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?") do |faraday|
-      faraday.headers["api_key"] = ENV['NREL-KEY']
+    Faraday.new(url: "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1") do |faraday|
+      faraday.headers["X-Api-Key"] = ENV['NREL-KEY']
       faraday.adapter Faraday.default_adapter
     end
   end
